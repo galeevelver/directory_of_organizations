@@ -1,0 +1,49 @@
+[project]
+name = "directory_of_organizations"
+version = "0.1.0"
+description = "Справочник организаций, зданий и деятельностей"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "asyncpg",
+    "alembic",
+    "greenlet",
+    "pydantic-settings",
+    "python-dotenv",
+    "faker"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+    "pytest-mock"
+]
+
+[tool.setuptools]
+packages = { find = { where = ["src"] } }
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = ["alembic"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+testpaths = ["src/tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto"
+addopts = "-v --tb=short"

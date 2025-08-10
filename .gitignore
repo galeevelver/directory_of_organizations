@@ -1,0 +1,14 @@
+cat <<EOF > .gitignore
+__pycache__/
+*.pyc
+*.egg-info/
+.idea/
+.venv/
+.env
+.env.*
+!.env.example
+.vscode/
+tests/
+EOF
+
+git add .gitignore
